@@ -29,7 +29,7 @@ fi
 if [ "$1" == "status" ]
 then
     COMMAND=1
-    (echo "MAILTO=\"dgempesaw@sharecare.com\"
+    (echo "MAILTO=\"\"
 
 00 20 * * * rm $HOME/sauce_connect.log
 00 20 * * * /usr/bin/killall java -u qa -v
