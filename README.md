@@ -4,6 +4,9 @@ Control your sauce tunnel.
 
 The commands you can use are:
 
+   crontab      Write over the crontab with the default Sauce-tasks
+                only crontab
+
    help         Show this help
 
    restart      Kill all java processes belonging to the user and

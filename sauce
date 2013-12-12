@@ -1,3 +1,5 @@
+#! /bin/bash
+
 : ${SAUCE_USER:?"Need to set SAUCE_USER:
 
     export SAUCE_USER=<your sauce username>"}
@@ -5,8 +7,9 @@
 
     export SAUCE_KEY=<your sauce api key>"}
 
-if [ "$1" == "update" ]
-then
+COMMAND=0
+
+if [ "$1" == "update" ] ; then
     COMMAND=1
     killall java -u $LOGNAME
     sleep 10
@@ -19,41 +22,43 @@ then
     rm sauce-connect-latest.zip
 fi
 
-if [ "$1" == "restart" ]
-then
+if [ "$1" == "restart" ] ; then
     COMMAND=1
     killall java -u $LOGNAME
+    sleep 20
     nohup /usr/bin/java -jar $HOME/sauceConnect/Sauce-Connect.jar --shared-tunnel $SAUCE_USER $SAUCE_KEY > $HOME/$SAUCE_USER &
 fi
 
-if [ "$1" == "status" ]
-then
+if [ "$1" == "crontab" ] ; then
     COMMAND=1
-    (echo "MAILTO=\"\"
+    (echo "MAILTO=\"dgempesaw@sharecare.com\"
 
-00 20 * * * rm $HOME/sauce_connect.log
-00 20 * * * /usr/bin/killall java -u qa -v
-01 20 * * * /usr/bin/java -jar $HOME/sauceConnect/Sauce-Connect.jar $SAUCE_USER $SAUCE_KEY > $HOME/$SAUCE_USER
+00 20 * * * rm $HOME/sauce_connect.log $HOME/arnoldmedia > /dev/null
+00 20 * * * /home/qa/sauce restart
+01 20 * * * /home/qa/sauce status
 
 ") | crontab
+fi
+
+if [ "$1" == "status" ] ; then
+    COMMAND=1
 
     echo "Running Sauce Tunnels:"
-    ps aux | grep Sauce
+    ps aux | grep Sauce | grep -v grep
+
 
     echo "
 Current Crontab:"
     (crontab -l) | cat
 fi
 
-if [ "$1" == "help" ] || [ "$1" == "--help" ] || [ "$1" == "-h" ] || [ "$COMMAND" != 1 ]
-then
-    echo "$HELP"
-fi
-
 HELP="Usage: ./sauce COMMAND
 Control your sauce tunnel.
 
 The commands you can use are:
+
+   crontab      Write over the crontab with the default Sauce-tasks
+                only crontab
 
    help         Show this help
 
@@ -69,3 +74,7 @@ The commands you can use are:
                 after this to start the tunnel again
 "
 
+if [ "$1" == "help" ] || [ "$1" == "--help" ] || [ "$1" == "-h" ] || [ $COMMAND -eq 0 ] ; then
+    echo "$HELP" > $HOME/README
+    echo "$HELP"
+fi
