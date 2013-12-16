@@ -2,8 +2,8 @@
 Usage: ./sauce COMMAND
 Control your Sauce tunnel. I use this only on a dedicated Sauce Connect
 box, as _crontab_ overwrites the crontab with only Sauce Connect
-entries, and _restart_ indiscriminately kills all java processes. These
-behaviors can of course be modified if necessary.
+entries, and _restart_ indiscriminately kills all of $LOGNAME's java
+processes. These behaviors can of course be modified if necessary.
 
 The commands you can use are:
 
