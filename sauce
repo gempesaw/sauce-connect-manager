@@ -7,8 +7,8 @@
 
     export SAUCE_KEY=<your sauce api key>"}
 MAIL=your@email.com
-
 COMMAND=0
+
 if [ "$1" == "update" ] ; then
     COMMAND=1
     killall java -u $LOGNAME
@@ -36,8 +36,8 @@ if [ "$1" == "crontab" ] ; then
     (echo "MAILTO=\"$MAIL\"
 
 00 20 * * * rm $HOME/sauce_connect.log $HOME/$SAUCE_USER > /dev/null
-00 20 * * * /home/qa/sauce restart
-01 20 * * * /home/qa/sauce status
+00 20 * * * $HOME/sauce restart
+01 20 * * * $HOME/sauce status
 */10 * * * * /usr/bin/perl $HOME/maintainTunnel.pl $SAUCE_USER $SAUCE_KEY restart >> $HOME/maintainLog
 
 ") | crontab
