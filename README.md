@@ -7,17 +7,16 @@ processes. These behaviors can of course be modified if necessary.
 
 The commands you can use are:
 
-   crontab      Write over the crontab with the default Sauce-tasks
-                only crontab
-
    help         Show this help
 
    restart      Kill all java processes belonging to the user and
                 nohup the sauce tunnel, stdout redirected to
-                $HOME/$SAUCE_USER
+                /home/qa/arnoldmedia
 
-   status       Reconstruct the crontab, view the running Sauce
-                tunnels and the current crontab
+   crontab      Write over the crontab with the default Sauce-tasks
+                only crontab
+
+   status       View the running Sauce tunnels and the current crontab
 
    update       Download a new version of the Sauce Connect jar in
                 ~/sauceConnect. You'll want to run ./sauce restart
