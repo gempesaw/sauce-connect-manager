@@ -10,8 +10,7 @@ The commands you can use are:
    help         Show this help
 
    restart      Kill all java processes belonging to the user and
-                nohup the sauce tunnel, stdout redirected to
-                /home/qa/arnoldmedia
+                nohup the sauce tunnel
 
    crontab      Write over the crontab with the default Sauce-tasks
                 only crontab
