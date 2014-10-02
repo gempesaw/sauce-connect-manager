@@ -1,4 +1,3 @@
-```
 Usage: ./sauce COMMAND
 Control your sauce tunnel.
 
@@ -20,4 +19,4 @@ The commands you can use are:
                 after this to start the tunnel again
 
    monitor      Check the status and echo it to a file in the home dir
-```
+
