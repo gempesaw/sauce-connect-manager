@@ -42,7 +42,7 @@ if [ "$1" == "crontab" ] ; then
 00 20 * * * rm $HOME/sauce_connect.log $HOME/$SAUCE_USERNAME > /dev/null
 00 7,12,17,20 * * * $HOME/sauce restart > /dev/null
 01 7,12,17,20 * * * $HOME/sauce status > /dev/null
-*/10 * * * * $HOME/sauce4 monitor > /dev/null
+*/10 * * * * $HOME/sauce monitor > /dev/null
 
 ") | crontab
 fi
