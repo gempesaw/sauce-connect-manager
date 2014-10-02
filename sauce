@@ -91,6 +91,5 @@ The commands you can use are:
 "
 
 if [ "$1" == "help" ] || [ "$1" == "--help" ] || [ "$1" == "-h" ] || [ $COMMAND -eq 0 ] ; then
-    echo "$HELP" > README.md
     echo "$HELP"
 fi
