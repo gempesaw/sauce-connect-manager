@@ -1,16 +1,14 @@
 ```
 Usage: ./sauce COMMAND
-Control your Sauce tunnel. I use this only on a dedicated Sauce Connect
-box, as _crontab_ overwrites the crontab with only Sauce Connect
-entries, and _restart_ indiscriminately kills all of $LOGNAME's java
-processes. These behaviors can of course be modified if necessary.
+Control your sauce tunnel.
 
 The commands you can use are:
 
    help         Show this help
 
    restart      Kill all java processes belonging to the user and
-                nohup the sauce tunnel
+                nohup the sauce tunnel, stdout redirected to
+                $HOME/$SAUCE_USERNAME
 
    crontab      Write over the crontab with the default Sauce-tasks
                 only crontab
@@ -20,4 +18,6 @@ The commands you can use are:
    update       Download a new version of the Sauce Connect jar in
                 ~/sauceConnect. You'll want to run ./sauce restart
                 after this to start the tunnel again
+
+   monitor      Check the status and echo it to a file in the home dir
 ```
