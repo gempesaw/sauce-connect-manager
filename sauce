@@ -26,13 +26,16 @@ fi
 
 if [ "$1" == "restart" ] ; then
     COMMAND=1
-    echo "Killing all java processes belonging to $LOGNAME and waiting for them to shut down";
-    killall java -u $LOGNAME
-    rm $HOME/sauce_connect.log
-    sleep 10
-    ulimit -n 8000
-    echo "Starting a new tunnel.";
-    nohup $HOME/sauceConnect/$SAUCE_VERSION/bin/sc -u $SAUCE_USERNAME -k $SAUCE_ACCESS_KEY --shared-tunnel > $HOME/$SAUCE_USERNAME &
+    echo "Killing all sc processes belonging to $LOGNAME and waiting for them to shut down";
+    killall -u $LOGNAME sc
+    rm $HOME/sauce_connect.log > /dev/null 2>&1
+    sleep 5
+    ulimit -n 8000 > /dev/null 2>&1
+    CMD="nohup $HOME/sauceConnect/$SAUCE_VERSION/bin/sc -u $SAUCE_USERNAME -k $SAUCE_ACCESS_KEY --shared-tunnel"
+    echo "Starting a new tunnel with
+
+$CMD";
+    $CMD > $HOME/$SAUCE_USERNAME 2>&1 &
 fi
 
 if [ "$1" == "crontab" ] ; then
@@ -54,7 +57,7 @@ if [ "$1" == "status" ] ; then
 
     echo "
 Running Sauce Tunnels on this box:"
-    ps aux | grep Sauce | grep -v grep
+    ps -ef | grep [s]auceConnec
 
     echo "
 Current Crontab:"
