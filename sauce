@@ -1,11 +1,11 @@
 #! /bin/bash
 
-: ${SAUCE_USER:?"Need to set SAUCE_USER:
+: ${SAUCE_USERNAME:?"Need to set SAUCE_USERNAME:
 
-    export SAUCE_USER=<your sauce username>"}
-: ${SAUCE_KEY:?"Need to set SAUCE_API_KEY:
+    export SAUCE_USERNAME=<your sauce username>"}
+: ${SAUCE_ACCESS_KEY:?"Need to set SAUCE_ACCESS_KEY:
 
-    export SAUCE_KEY=<your sauce api key>"}
+    export SAUCE_ACCESS_KEY=<your sauce api key>"}
 MAIL=your@email.com
 COMMAND=0
 SAUCE_VERSION=sc-4.3.5-linux
